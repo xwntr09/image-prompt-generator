@@ -1,0 +1,47 @@
+{
+  "main_prompt": {
+    "commands": "/preserve-face /same-person /facial-features-locked /photorealistic",
+    "goal": "Recreate the requested composition using the main avatar identity, specified pose, outfit, and background; keep the result photorealistic and match the requested lighting.",
+    "rules": {
+      "reference_priority": "Latest explicit instructions > avatar identity > pose reference > outfit reference > background reference > defaults, with explicit attribute overrides respected.",
+      "identity": "Preserve the avatar face, eyes, eyebrows, nose, lips, and skin tone except attributes explicitly requested to change.",
+      "lighting": "Select flash according to explicit instructions, time of day, ambient brightness, and camera type.",
+      "camera": "Use coherent framing and recommended generation settings; do not claim to have read EXIF metadata."
+    },
+    "detail_character": {
+      "identity_lock": {
+        "commands": "/preserve-face /same-person /facial-features-locked",
+        "instruction": "Use the exact same facial identity as the avatar reference, without copying the pose-reference model's face.",
+        "allowed_to_change": ["hairstyle", "outfit", "expression", "pose", "accessories when requested"],
+        "not_allowed_to_change": ["facial identity", "unrequested eye changes", "skin tone", "body proportions", "height"]
+      },
+      "height": "180 cm",
+      "makeup_style": "Natural glowy makeup with realistic skin texture",
+      "expression": "Describe the exact eyes, mouth, gaze direction, and mood",
+      "pose": "Describe body orientation, head placement, arms, legs, and gesture",
+      "outfits": "Describe selected reference clothing, cut, fabric, fit, and accessories"
+    },
+    "detail_photo_style": {
+      "photo_style": "Photorealistic lifestyle photography",
+      "background": "Describe the reference setting and spatial details",
+      "lighting": "Describe direction, source, softness, ambient brightness, and flash conditions",
+      "flashlight_level": "none",
+      "colour_grading": "Describe warmth/coolness, saturation, contrast, and color cast",
+      "vibe": "Describe the mood in photographic rather than abstract terms"
+    },
+    "detail_camera": {
+      "camera_type": "Smartphone front camera / smartphone back camera / professional camera",
+      "camera_angle": "Describe view angle, tilt, subject direction, and perspective",
+      "camera_settings": {
+        "frame_and_lens": "Recommended focal length / lens equivalent",
+        "ISO": "Suggested ISO or 'not applicable'",
+        "shutter_speed": "Suggested shutter speed or 'not applicable'",
+        "aperture": "Suggested aperture or 'not applicable'"
+      },
+      "distance_between_subject_and_camera": "Approximate distance suggested for composition",
+      "character_position_on_frame": "Relative left/center/right placement and crop",
+      "aspect_ratio": "4:5"
+    },
+    "negative_prompt": "wrong facial identity, face swap artifacts, incorrect anatomy, extra fingers, duplicate limbs, plastic skin, oversharpening, cartoon style, watermark, text"
+  }
+}
